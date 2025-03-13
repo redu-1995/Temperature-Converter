@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter Website</title>
+    <style>
+body{
+    background-color: rgb(219, 219, 219);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+h1, p{
+    text-align: center;
+  
+}
+h2{
+     display: inline-block;   
+     padding-right: 10px;
+     margin-left: 30rem; 
+}
+#convert{
+    margin-top: 2rem;
+    margin-left: 35rem; 
+}
+input{
+    height: 2rem;
+    width: 17rem;
+    background-color: rgb(253, 188, 188);
+    color:rgb(0, 0, 0);
+    border: 1px solid rgb(240, 211, 46);
+    border-radius: 12px;
+}
+button{
+    width:8rem;
+    height: 2rem;
+    border: 1px solid rgb(240, 211, 46);
+    border-radius: 12px;
+}
+button:hover{
+    background-color: rgb(56, 92, 80);
+    cursor: pointer;
+}
+@media (max-width: 1000px) {
+    input{
+    height: 2rem;
+    width: 17rem;
+    background-color: rgb(253, 188, 188);
+    color:rgb(0, 0, 0);
+    border: 1px solid rgb(240, 211, 46);
+    border-radius: 12px;
+}
+h2{
+     display: inline-block;   
+     padding-right: 5px;
+     margin-left: 20rem; 
+}
+#convert{
+    margin-top: 2rem;
+    margin-left: 25rem; 
+}
+}
+@media (max-width: 800px) {
+    input{
+    height: 2rem;
+    width: 17rem;
+    background-color: rgb(253, 188, 188);
+    color:rgb(0, 0, 0);
+    border: 1px solid rgb(240, 211, 46);
+    border-radius: 12px;
+}
+h2{
+     display: inline-block;   
+     padding-right: 5px;
+     margin-left: 10rem; 
+}
+#convert{
+    margin-top: 2rem;
+    margin-left: 15rem; 
+}
+}
+@media (max-width: 600px) {
+    input{
+    height: 2rem;
+    width: 17rem;
+    background-color: rgb(253, 188, 188);
+    color:rgb(0, 0, 0);
+    border: 1px solid rgb(240, 211, 46);
+    border-radius: 12px;
+}
+h2{
+     display: inline-block;   
+     padding-right: 5px;
+     margin-left: 4rem; 
+}
+#convert{
+    margin-top: 2rem;
+    margin-left: 8rem; 
+}
+}
+    </style>
+</head>
+
+<body>
+    <h1>Temperature Converter</h1>
+<p> Enter the value of temperature that you want to convert and press the Convert button
+    
+</p>
+
+   <h2>Celsius</h2><input name="converter" type="number" id="Celsius" placeholder="Enter the degree in Celsius"><br>
+   <h2>Fahrenheit</h2><input  name="converter" type="number" id="Fahrenheit" placeholder="Enter the degree in Fahrenheit"><br>
+   <h2>kelvin</h2><input  name="converter" type="number" id="kelvin" placeholder="Enter the degree in kelvin"><br>
+   <button onclick="convert()"id="convert">Convert</button>
+   <button onclick="clearFields()" id="clear">Clear</button>
+
+   <script>
+    
+     function celsiusToFahrenheit() {
+        let degreeC = parseInt(document.getElementById("Celsius").value )
+          let result =  (degreeC * 9/5) + 32
+          document.getElementById("Fahrenheit").value = result 
+   } 
+   function celsiusToKelvin() {
+        let degreeC = parseInt(document.getElementById("Celsius").value )
+          let result =  degreeC + 273.15;
+          document.getElementById("kelvin").value = result
+   } 
+   function FahrenheitTocelsius() {
+        let degreeF = parseInt(document.getElementById("Fahrenheit").value )
+          let result =  (degreeF - 32) * 5/9;
+          document.getElementById("Celsius").value = result;
+   } 
+   
+   function FahrenheitTokelvin() {
+        let degreeF = parseInt(document.getElementById("Fahrenheit").value )
+          let result =  5/9 *(degreeF - 32) + 273.15 ;
+          document.getElementById("kelvin").value = result
+   } 
+   function KelvinTocelsius() {
+        let degreeK = parseInt(document.getElementById("kelvin").value )
+          let result = degreeK-273.15;
+          document.getElementById("Celsius").value = result
+   } 
+   
+   function KelvinToFahrenheit() {
+        let degreeK = parseInt(document.getElementById("kelvin").value )
+          let result =( (degreeK-273.15)*9/5)+32;
+          document.getElementById("Fahrenheit").value = result
+   } 
+
+   function convert(){
+      if(document.getElementById("Celsius").value){
+        celsiusToFahrenheit()
+        celsiusToKelvin()
+      }
+      else if(document.getElementById("Fahrenheit").value){
+        FahrenheitTocelsius()
+        FahrenheitTokelvin()
+      }
+      else{
+        KelvinTocelsius()
+        KelvinToFahrenheit()
+      }
+   }
+   
+   function clearFields() {
+  let elements = document.getElementsByName("converter");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].value = "";
+  }
+}
+
+
+
+   </script>
+</body>
+</html>
